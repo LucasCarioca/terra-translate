@@ -7,6 +7,7 @@ import (
 	"os"
 )
 
+// ReadPipe reads in the content that is piped to the utility and returns it as a string
 func ReadPipe() (string, error) {
 	info, err := os.Stdin.Stat()
 	if err != nil {

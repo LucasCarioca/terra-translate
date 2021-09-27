@@ -1,10 +1,11 @@
-package terra_translate
+package terratranslate
 
 import (
 	"encoding/json"
 	"strings"
 )
 
+// Changes Summary of the changes that terraform plan is showing will be made
 type Changes struct {
 	Add int				`json:"add"`
 	Change int			`json:"change"`
@@ -16,6 +17,7 @@ type rawChanges struct {
 	Changes Changes `json:"changes"`
 }
 
+// GetSummary returns a set of changes from the provided terraform plan
 func GetSummary(data string) (Changes, error) {
 	sections := strings.SplitAfter(data, "} ")
 	summaryData := sections[len(sections)-1]

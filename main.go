@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	terra_translate "github.com/LucasCarioca/terra-translate/pkg/terra-translate"
+	t "github.com/LucasCarioca/terra-translate/pkg/terra-translate"
 	"github.com/LucasCarioca/terra-translate/pkg/utilities"
 	"os"
 )
@@ -18,7 +18,7 @@ func main() {
 	}
 
 	//fmt.Printf(input)
-	summary, err := terra_translate.GetSummary(input)
+	summary, err := t.GetSummary(input)
 
 	if err != nil {
 		fmt.Println(err.Error())
