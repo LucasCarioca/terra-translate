@@ -7,10 +7,10 @@ import (
 
 // Changes Summary of the changes that terraform plan is showing will be made
 type Changes struct {
-	Add int				`json:"add"`
-	Change int			`json:"change"`
-	Remove int			`json:"remove"`
-	Operation string 	`json:"operation"`
+	Add       int    `json:"add"`
+	Change    int    `json:"change"`
+	Remove    int    `json:"remove"`
+	Operation string `json:"operation"`
 }
 
 type rawChanges struct {

@@ -28,6 +28,6 @@ func ReadPipe() (string, error) {
 		}
 		output = append(output, input)
 	}
-	
+
 	return string(output), nil
 }
