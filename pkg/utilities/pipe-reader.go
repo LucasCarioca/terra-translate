@@ -3,7 +3,6 @@ package utilities
 import (
 	"bufio"
 	"errors"
-	"fmt"
 	"io"
 	"os"
 )
@@ -28,9 +27,6 @@ func ReadPipe() (string, error) {
 		}
 		output = append(output, input)
 	}
-
-	for j := 0; j < len(output); j++ {
-		fmt.Printf("%c", output[j])
-	}
+	
 	return string(output), nil
 }
