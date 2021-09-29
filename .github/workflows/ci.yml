@@ -7,6 +7,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - run: |
+          ls -al
+          ls -al ./pkg/terra-translate
+          cat ./pkg/terra-translate/read-command.go
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
