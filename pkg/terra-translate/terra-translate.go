@@ -6,7 +6,7 @@ import (
 )
 
 // Changes Summary of the changes that terraform plan is showing will be made
-type Changes struct {
+type changes struct {
 	Add       int    `json:"add"`
 	Change    int    `json:"change"`
 	Remove    int    `json:"remove"`
@@ -14,17 +14,17 @@ type Changes struct {
 }
 
 type rawChanges struct {
-	Changes Changes `json:"changes"`
+	Changes changes `json:"changes"`
 }
 
-// GetSummary returns a set of changes from the provided terraform plan
-func GetSummary(data string) (Changes, error) {
+
+func getSummary(data string) (changes, error) {
 	sections := strings.SplitAfter(data, "} ")
 	summaryData := sections[len(sections)-1]
 	summary := rawChanges{}
 	err := json.Unmarshal([]byte(summaryData), &summary)
 	if err != nil {
-		return Changes{}, err
+		return changes{}, err
 	}
 	return summary.Changes, nil
 }
