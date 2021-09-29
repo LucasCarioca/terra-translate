@@ -3,7 +3,7 @@ package terratranslate
 import "fmt"
 
 //HelpCommand is used to show usage information about the cli
-type HelpCommand struct {}
+type HelpCommand struct{}
 
 //Run executes the help command
 func (c *HelpCommand) Run() {

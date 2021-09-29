@@ -7,8 +7,7 @@ import (
 )
 
 //ReadCommand controller for reading and interpreting the terraform logs
-type ReadCommand struct {}
-
+type ReadCommand struct{}
 
 //Run executes the command
 func (c *ReadCommand) Run() {

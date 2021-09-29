@@ -17,7 +17,6 @@ type rawChanges struct {
 	Changes changes `json:"changes"`
 }
 
-
 func getSummary(data string) (changes, error) {
 	sections := strings.SplitAfter(data, "} ")
 	summaryData := sections[len(sections)-1]
