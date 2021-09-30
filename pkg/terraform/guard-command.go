@@ -9,12 +9,12 @@ import (
 
 type guardOptions struct {
 	destroy bool
-	add bool
-	change bool
+	add     bool
+	change  bool
 }
 
 //GuardCommand controller for reading and interpreting the terraform logs
-type GuardCommand struct{
+type GuardCommand struct {
 	t Translator
 }
 
@@ -33,8 +33,8 @@ func (c *GuardCommand) getOptions() (*guardOptions, error) {
 	err := guardCmd.Parse(os.Args[2:])
 	options := guardOptions{
 		destroy: *destroy,
-		add: *add,
-		change: *change,
+		add:     *add,
+		change:  *change,
 	}
 	return &options, err
 }
