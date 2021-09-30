@@ -1,4 +1,4 @@
-package terratranslate
+package terraform
 
 import (
 	"fmt"

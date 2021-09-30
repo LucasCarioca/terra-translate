@@ -1,7 +1,8 @@
-package terratranslate
+package terraform
 
 import (
 	"encoding/json"
+	"errors"
 	"strings"
 )
 
@@ -23,7 +24,7 @@ func getSummary(data string) (changes, error) {
 	summary := rawChanges{}
 	err := json.Unmarshal([]byte(summaryData), &summary)
 	if err != nil {
-		return changes{}, err
+		return changes{}, errors.New("unable to read terraform output data")
 	}
 	return summary.Changes, nil
 }

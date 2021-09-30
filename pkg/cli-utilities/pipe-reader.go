@@ -15,7 +15,7 @@ func ReadPipe() (string, error) {
 	}
 
 	if info.Mode()&os.ModeCharDevice != 0 || info.Size() <= 0 {
-		return "", errors.New("The command is intended to work with pipes.\nUsage: fortune | terra-translate")
+		return "", errors.New("The command is intended to work with pipes.\nUsage: fortune | terraform")
 	}
 
 	reader := bufio.NewReader(os.Stdin)

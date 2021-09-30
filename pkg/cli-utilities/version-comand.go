@@ -2,7 +2,7 @@ package cliutilities
 
 import "fmt"
 
-//VersionCommand used to retrieve the current version of the terra-translate cli
+//VersionCommand used to retrieve the current version of the terraform cli
 type VersionCommand struct {
 	Version string
 }

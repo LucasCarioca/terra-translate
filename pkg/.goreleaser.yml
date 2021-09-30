@@ -1,4 +1,4 @@
-project_name: terra-translate
+project_name: terraform
 before:
   hooks:
     - go mod tidy

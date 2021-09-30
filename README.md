@@ -15,18 +15,18 @@ a small utility for reading terraform plan output and used to setup basic ci/cd 
 
 This just reads the output and prints out a simplified summary of the changes.
 ```shell
-echo $(terraform plan -json) | terra-translate read
+echo $(terraform plan -json) | terraform read
 # If using fish...
-echo (terraform plan -json) | terra-translate read
+echo (terraform plan -json) | terraform read
 ```
 
 **Destroy Guard Usage**
 
 This option will not only print out the summary but also exit with code 1 in order to be used as a way to abort a CI/CD pipeline.
 ```shell
-echo $(terraform plan -json) | terra-translate guard -d
+echo $(terraform plan -json) | terraform guard -d
 # If using fish...
-echo (terraform plan -json) | terra-translate guard -d
+echo (terraform plan -json) | terraform guard -d
 ```
 
 **Guard Options**
@@ -37,7 +37,7 @@ echo (terraform plan -json) | terra-translate guard -d
 
 these flags can also be combined. for example the below snippit would only allow changes to existing resources but no additional resources or destructive changes.: 
 ```shell
-echo $(terraform plan -json) | terra-translate guard -d -a 
+echo $(terraform plan -json) | terraform guard -d -a 
 # If using fish...
-echo (terraform plan -json) | terra-translate guard -d -a 
+echo (terraform plan -json) | terraform guard -d -a 
 ```

@@ -1,4 +1,4 @@
-package terratranslate
+package terraform
 
 import "fmt"
 
@@ -7,7 +7,7 @@ type HelpCommand struct{}
 
 //Run executes the help command
 func (c *HelpCommand) Run() {
-	fmt.Println("USAGE: terra-translate [COMMAND] [OPTIONS]")
+	fmt.Println("USAGE: terraform [COMMAND] [OPTIONS]")
 	fmt.Println("COMMANDS:")
 	fmt.Println("\tread\tRead terraform logs")
 	fmt.Println("\tguard\tAbort based on certain criteria")
