@@ -15,9 +15,9 @@ func main() {
 	if len(os.Args) > 1 {
 		switch os.Args[1] {
 		case "read":
-			cmd = &t.ReadCommand{}
+			cmd = t.NewReadCommand()
 		case "guard":
-			cmd = &t.GuardCommand{}
+			cmd = t.NewGuardCommand()
 		case "version":
 			cmd = &cli.VersionCommand{Version: version}
 		case "help":

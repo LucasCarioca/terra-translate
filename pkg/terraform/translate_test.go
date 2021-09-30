@@ -7,10 +7,10 @@ import (
 
 //TestTerraTranslate test suite
 func Test_terra_translate(t *testing.T) {
-
+	translator := Translator{}
 	t.Run("getSummary should throw an error when given invalid input", func(t *testing.T) {
 		expectedError := "unable to read terraform output data"
-		_, err := getSummary("invalid data")
+		_, err := translator.GetSummary("invalid data")
 		if err == nil {
 			t.Errorf("Should throw an error when provided invalid data")
 		}
@@ -28,15 +28,15 @@ func Test_terra_translate(t *testing.T) {
 			expectedAdd,
 			expectedChanges,
 			expectedRemove)
-		actuals, err := getSummary(inputData)
+		actuals, err := translator.GetSummary(inputData)
 		if err != nil {
 			t.Errorf("Should not error out with proper data")
 		}
 
-		if actuals.Remove != expectedRemove{
+		if actuals.Remove != expectedRemove {
 			t.Errorf("Expected remove to be: %d, Got: %d", expectedChanges, actuals.Change)
 		}
-		if actuals.Add != expectedAdd{
+		if actuals.Add != expectedAdd {
 			t.Errorf("Expected add to be: %d, Got: %d", expectedChanges, actuals.Change)
 		}
 		if actuals.Change != expectedChanges {

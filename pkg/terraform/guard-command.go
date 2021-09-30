@@ -8,7 +8,16 @@ import (
 )
 
 //GuardCommand controller for reading and interpreting the terraform logs
-type GuardCommand struct{}
+type GuardCommand struct{
+	t Translator
+}
+
+//NewGuardCommand creates a new instance of the GuardCommand
+func NewGuardCommand() *GuardCommand {
+	return &GuardCommand{
+		t: Translator{},
+	}
+}
 
 //Run executes the command
 func (c *GuardCommand) Run() {
@@ -30,7 +39,7 @@ func (c *GuardCommand) Run() {
 			os.Exit(1)
 		}
 
-		summary, err := getSummary(input)
+		summary, err := c.t.GetSummary(input)
 		if err != nil {
 			fmt.Println(err.Error())
 			os.Exit(1)

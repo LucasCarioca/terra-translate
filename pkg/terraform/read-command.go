@@ -7,7 +7,16 @@ import (
 )
 
 //ReadCommand controller for reading and interpreting the terraform logs
-type ReadCommand struct{}
+type ReadCommand struct {
+	t Translator
+}
+
+//NewReadCommand creates a new instance of the ReadCommand
+func NewReadCommand() *ReadCommand {
+	return &ReadCommand{
+		t: Translator{},
+	}
+}
 
 //Run executes the command
 func (c *ReadCommand) Run() {
@@ -17,7 +26,7 @@ func (c *ReadCommand) Run() {
 		os.Exit(1)
 	}
 
-	summary, err := getSummary(input)
+	summary, err := c.t.GetSummary(input)
 	if err != nil {
 		fmt.Println(err.Error())
 		os.Exit(1)
