@@ -16,11 +16,18 @@ jobs:
           go version
           go get -u golang.org/x/lint/golint
       - name: Go vet
-        run: go vet ./...
+        run: make vet
       - name: Go lint
-        run: golint ./...
+        run: make lint
        - name: Go test
-        run: go test ./...
+        run: make test
+      - name: Convert coverage.out to coverage.lcov
+        uses: jandelgado/gcov2lcov-action@v1.0.6
+      - name: Coveralls
+        uses: coverallsapp/github-action@v1.1.2
+        with:
+          github-token: ${{ secrets.github_token }}
+          path-to-lcov: coverage.lcov
   release-dryrun:
     runs-on: ubuntu-latest
     steps:

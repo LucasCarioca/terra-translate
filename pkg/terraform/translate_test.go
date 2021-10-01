@@ -2,45 +2,48 @@ package terraform
 
 import (
 	"fmt"
+	"github.com/stretchr/testify/assert"
+	"math/rand"
 	"testing"
 )
 
 //TestTerraTranslate test suite
 func Test_terra_translate(t *testing.T) {
 	translator := Translator{}
-	t.Run("getSummary should throw an error when given invalid input", func(t *testing.T) {
+
+	t.Run("getSummary should throw an error when given invalid terraform output", func(t *testing.T) {
 		expectedError := "unable to read terraform output data"
 		_, err := translator.GetSummary("invalid data")
-		if err == nil {
-			t.Errorf("Should throw an error when provided invalid data")
-		}
-		if err.Error() != expectedError {
-			t.Errorf("Expected error to be \"%s\", but got \"%s\"", expectedError, err.Error())
-		}
+		assert.NotNil(t, err, "Should throw an error")
+		assert.Equalf(t, expectedError, err.Error(), "Should throw the appropriate error")
 	})
 
-	t.Run("getSummary should return a change summary from proper terraform input", func(t *testing.T) {
-		expectedAdd := 0
-		expectedChanges := 0
-		expectedRemove := 0
+	t.Run("getSummary should return a change summary from proper terraform output", func(t *testing.T) {
+		expectedAdd := rand.Int()
+		expectedChanges := rand.Int()
+		expectedRemove := rand.Int()
 		inputData := fmt.Sprintf(
-			`{"changes": {"operation": "plan", "add": %d, "changes": %d, "remove": %d}}`,
+			`{"changes": {"operation": "plan", "add": %d, "change": %d, "remove": %d}}`,
 			expectedAdd,
 			expectedChanges,
 			expectedRemove)
-		actuals, err := translator.GetSummary(inputData)
-		if err != nil {
-			t.Errorf("Should not error out with proper data")
-		}
+		actual, err := translator.GetSummary(inputData)
+		assert.Nil(t, err, "Should not throw an error")
+		assert.Equalf(t, expectedRemove, actual.Remove, "Should match data from terraform input (destroy)")
+		assert.Equalf(t, expectedAdd, actual.Add, "Should match data from terraform input (add)")
+		assert.Equalf(t, expectedChanges, actual.Change, "Should match data from terraform input (change)")
+	})
 
-		if actuals.Remove != expectedRemove {
-			t.Errorf("Expected remove to be: %d, Got: %d", expectedChanges, actuals.Change)
-		}
-		if actuals.Add != expectedAdd {
-			t.Errorf("Expected add to be: %d, Got: %d", expectedChanges, actuals.Change)
-		}
-		if actuals.Change != expectedChanges {
-			t.Errorf("Expected change to be: %d, Got: %d", expectedChanges, actuals.Change)
-		}
+	t.Run("getSummary should return a change summary even if there are multiple rows of output from terraform", func(t *testing.T) {
+		expectedAdd := rand.Int()
+		expectedChanges := rand.Int()
+		expectedRemove := rand.Int()
+		inputData := fmt.Sprintf(
+			`{} {} {} {"changes": {"operation": "plan", "add": %d, "change": %d, "remove": %d}}`,
+			expectedAdd,
+			expectedChanges,
+			expectedRemove)
+		_, err := translator.GetSummary(inputData)
+		assert.Nil(t, err, "Should not throw an error")
 	})
 }

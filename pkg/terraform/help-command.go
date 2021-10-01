@@ -6,11 +6,12 @@ import "fmt"
 type HelpCommand struct{}
 
 //Run executes the help command
-func (c *HelpCommand) Run() {
-	fmt.Println("USAGE: terraform [COMMAND] [OPTIONS]")
-	fmt.Println("COMMANDS:")
-	fmt.Println("\tread\tRead terraform logs")
-	fmt.Println("\tguard\tAbort based on certain criteria")
-	fmt.Println("\tversion\tGet current version")
-	fmt.Println("\thelp\tGet cli documentation version")
+func (c *HelpCommand) Run() error {
+	fmt.Fprintln(out, "USAGE: terraform [COMMAND] [OPTIONS]")
+	fmt.Fprintln(out, "COMMANDS:")
+	fmt.Fprintln(out, "\tread\tRead terraform logs")
+	fmt.Fprintln(out, "\tguard\tAbort based on certain criteria")
+	fmt.Fprintln(out, "\tversion\tGet current version")
+	fmt.Fprintln(out, "\thelp\tGet cli documentation version")
+	return nil
 }

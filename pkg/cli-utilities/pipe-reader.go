@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-// ReadPipe reads in the content that is piped to the utility and returns it as a string
+// ReadPipe reads in the content that is piped to the cli and returns it as a string
 func ReadPipe() (string, error) {
 	info, err := os.Stdin.Stat()
 	if err != nil {
@@ -15,7 +15,7 @@ func ReadPipe() (string, error) {
 	}
 
 	if info.Mode()&os.ModeCharDevice != 0 || info.Size() <= 0 {
-		return "", errors.New("The command is intended to work with pipes.\nUsage: fortune | terraform")
+		return "", errors.New("the command is intended to work with pipes")
 	}
 
 	reader := bufio.NewReader(os.Stdin)

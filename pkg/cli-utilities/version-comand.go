@@ -8,6 +8,7 @@ type VersionCommand struct {
 }
 
 //Run run the command
-func (c *VersionCommand) Run() {
+func (c *VersionCommand) Run() error {
 	fmt.Printf("Current version: v%s\n", c.Version)
+	return nil
 }

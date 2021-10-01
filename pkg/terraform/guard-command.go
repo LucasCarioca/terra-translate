@@ -1,6 +1,7 @@
 package terraform
 
 import (
+	"errors"
 	"flag"
 	"fmt"
 	cli "github.com/LucasCarioca/terra-translate/pkg/cli-utilities"
@@ -15,13 +16,15 @@ type guardOptions struct {
 
 //GuardCommand controller for reading and interpreting the terraform logs
 type GuardCommand struct {
-	t Translator
+	t    TranslatorInterface
+	pipe func() (string, error)
 }
 
 //NewGuardCommand creates a new instance of the GuardCommand
 func NewGuardCommand() *GuardCommand {
 	return &GuardCommand{
-		t: Translator{},
+		t:    &Translator{},
+		pipe: cli.ReadPipe,
 	}
 }
 
@@ -40,61 +43,58 @@ func (c *GuardCommand) getOptions() (*guardOptions, error) {
 }
 
 //Run executes the command
-func (c *GuardCommand) Run() {
+func (c *GuardCommand) Run() error {
 
 	options, err := c.getOptions()
 	if err != nil {
-		fmt.Println(err.Error())
-		os.Exit(1)
+		return err
 	}
 
 	if options.destroy || options.add || options.change {
-		input, err := cli.ReadPipe()
+		input, err := c.pipe()
 		if err != nil {
-			fmt.Println(err.Error())
-			os.Exit(1)
+			return err
 		}
 
 		summary, err := c.t.GetSummary(input)
 		if err != nil {
-			fmt.Println(err.Error())
-			os.Exit(1)
+			return err
 		}
 
 		abort := false
 
 		if options.destroy {
 			if summary.Remove > 0 {
-				fmt.Printf("💣 ERROR: %d destructive change(s) detected!\n", summary.Remove)
+				fmt.Fprintf(out, "💣 ERROR: %d destructive change(s) detected!\n", summary.Remove)
 				abort = true
 			} else {
-				fmt.Println("🚀 No destructive changes detected")
+				fmt.Fprintln(out, "🚀 No destructive changes detected")
 			}
 		}
 
 		if options.add {
 			if summary.Add > 0 {
-				fmt.Printf("💣 ERROR: %d additional resource(s) detected!\n", summary.Add)
+				fmt.Fprintf(out, "💣 ERROR: %d additional resource(s) detected!\n", summary.Add)
 				abort = true
 			} else {
-				fmt.Println("🚀 No additional resources detected")
+				fmt.Fprintln(out, "🚀 No additional resources detected")
 			}
 		}
 
 		if options.change {
 			if summary.Change > 0 {
-				fmt.Printf("💣 ERROR: %d resource change(s) detected!\n", summary.Change)
+				fmt.Fprintf(out, "💣 ERROR: %d resource change(s) detected!\n", summary.Change)
 				abort = true
 			} else {
-				fmt.Println("🚀 No resources to be changed detected")
+				fmt.Fprintln(out, "🚀 No resources to be changed detected")
 			}
 		}
 
 		if abort {
-			fmt.Println("\n\nGuarded changes have been detected.\n" +
+			return errors.New("\n\nGuarded changes have been detected.\n" +
 				"See the output above for more information.\n" +
 				"Exiting with code 1")
-			os.Exit(1)
 		}
 	}
+	return nil
 }

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	cli "github.com/LucasCarioca/terra-translate/pkg/cli-utilities"
 	t "github.com/LucasCarioca/terra-translate/pkg/terraform"
 	"os"
@@ -28,5 +29,9 @@ func main() {
 	} else {
 		cmd = &t.HelpCommand{}
 	}
-	cmd.Run()
+	err := cmd.Run()
+	if err != nil {
+		fmt.Println(err.Error())
+		os.Exit(1)
+	}
 }
