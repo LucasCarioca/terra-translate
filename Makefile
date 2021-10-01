@@ -17,3 +17,6 @@ fmt-check:
 
 fix:
 	go fix ./...
+
+chk:
+	staticcheck ./...
