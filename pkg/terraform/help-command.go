@@ -6,7 +6,7 @@ import "fmt"
 type HelpCommand struct{}
 
 //Run executes the help command
-func (c *HelpCommand) Run() error {
+func (_ *HelpCommand) Run() error {
 	fmt.Fprintln(out, "USAGE: terraform [COMMAND] [OPTIONS]")
 	fmt.Fprintln(out, "COMMANDS:")
 	fmt.Fprintln(out, "\tread\tRead terraform logs")

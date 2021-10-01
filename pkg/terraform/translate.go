@@ -28,7 +28,7 @@ type ChangesWrapper struct {
 }
 
 //GetSummary takes the terraform output as a paramter and returns a summary of the changes
-func (t *Translator) GetSummary(data string) (Changes, error) {
+func (_ *Translator) GetSummary(data string) (Changes, error) {
 	sections := strings.SplitAfter(data, "} ")
 	summaryData := sections[len(sections)-1]
 	summary := ChangesWrapper{}

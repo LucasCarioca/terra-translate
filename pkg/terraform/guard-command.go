@@ -28,7 +28,7 @@ func NewGuardCommand() *GuardCommand {
 	}
 }
 
-func (c *GuardCommand) getOptions() (*guardOptions, error) {
+func (_ *GuardCommand) getOptions() (*guardOptions, error) {
 	guardCmd := flag.NewFlagSet("guard", flag.ExitOnError)
 	destroy := guardCmd.Bool("d", false, "Abort when destructive changes are detected")
 	add := guardCmd.Bool("a", false, "Abort when additional resource(s) are detected")
