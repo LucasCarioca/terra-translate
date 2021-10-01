@@ -8,3 +8,6 @@ lint:
 
 vet:
 	go vet ./...
+
+fmt:
+	go fmt ./...

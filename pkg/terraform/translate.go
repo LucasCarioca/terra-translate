@@ -12,7 +12,7 @@ type TranslatorInterface interface {
 }
 
 //Translator a utility to interpret the output from terraform operations
-type Translator struct {}
+type Translator struct{}
 
 //Changes Summary of the changes that terraform plan is showing will be made
 type Changes struct {
