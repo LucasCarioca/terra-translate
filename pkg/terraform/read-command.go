@@ -5,8 +5,6 @@ import (
 	cli "github.com/LucasCarioca/terra-translate/pkg/cli-utilities"
 )
 
-type readOptions struct{}
-
 //ReadCommand controller for reading and interpreting the terraform logs
 type ReadCommand struct {
 	t    TranslatorInterface
