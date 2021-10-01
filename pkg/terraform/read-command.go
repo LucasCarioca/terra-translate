@@ -1,42 +1,28 @@
 package terraform
 
 import (
-	"flag"
 	"fmt"
 	cli "github.com/LucasCarioca/terra-translate/pkg/cli-utilities"
-	"os"
 )
 
 type readOptions struct{}
 
 //ReadCommand controller for reading and interpreting the terraform logs
 type ReadCommand struct {
-	t    Translator
+	t    TranslatorInterface
 	pipe func() (string, error)
 }
 
 //NewReadCommand creates a new instance of the ReadCommand
 func NewReadCommand() *ReadCommand {
 	return &ReadCommand{
-		t:    Translator{},
+		t:    &Translator{},
 		pipe: cli.ReadPipe,
 	}
 }
 
-func (*ReadCommand) getOptions() (*readOptions, error) {
-	readCmd := flag.NewFlagSet("read", flag.ExitOnError)
-	err := readCmd.Parse(os.Args[2:])
-	options := readOptions{}
-	return &options, err
-}
-
 //Run executes the command
 func (c *ReadCommand) Run() error {
-
-	_, err := c.getOptions()
-	if err != nil {
-		return err
-	}
 
 	input, err := c.pipe()
 	if err != nil {

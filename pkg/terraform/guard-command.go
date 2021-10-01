@@ -28,27 +28,24 @@ func NewGuardCommand() *GuardCommand {
 	}
 }
 
-func (*GuardCommand) getOptions() (*guardOptions, error) {
+func (*GuardCommand) getOptions() *guardOptions {
 	guardCmd := flag.NewFlagSet("guard", flag.ExitOnError)
 	destroy := guardCmd.Bool("d", false, "Abort when destructive changes are detected")
 	add := guardCmd.Bool("a", false, "Abort when additional resource(s) are detected")
 	change := guardCmd.Bool("c", false, "Abort when change(s) are detected")
-	err := guardCmd.Parse(os.Args[2:])
+	guardCmd.Parse(os.Args[2:])
 	options := guardOptions{
 		destroy: *destroy,
 		add:     *add,
 		change:  *change,
 	}
-	return &options, err
+	return &options
 }
 
 //Run executes the command
 func (c *GuardCommand) Run() error {
 
-	options, err := c.getOptions()
-	if err != nil {
-		return err
-	}
+	options := c.getOptions()
 
 	if options.destroy || options.add || options.change {
 		input, err := c.pipe()
