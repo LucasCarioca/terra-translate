@@ -1,4 +1,16 @@
 mode: count
+github.com/LucasCarioca/terra-translate/pkg/terraform/read-command.go:19.36,24.2 1 0
+github.com/LucasCarioca/terra-translate/pkg/terraform/read-command.go:26.58,31.2 4 0
+github.com/LucasCarioca/terra-translate/pkg/terraform/read-command.go:34.35,37.16 2 0
+github.com/LucasCarioca/terra-translate/pkg/terraform/read-command.go:41.2,42.16 2 0
+github.com/LucasCarioca/terra-translate/pkg/terraform/read-command.go:46.2,47.16 2 0
+github.com/LucasCarioca/terra-translate/pkg/terraform/read-command.go:51.2,56.12 5 0
+github.com/LucasCarioca/terra-translate/pkg/terraform/read-command.go:37.16,39.3 1 0
+github.com/LucasCarioca/terra-translate/pkg/terraform/read-command.go:42.16,44.3 1 0
+github.com/LucasCarioca/terra-translate/pkg/terraform/read-command.go:47.16,49.3 1 0
+github.com/LucasCarioca/terra-translate/pkg/terraform/translate.go:31.63,36.16 5 3
+github.com/LucasCarioca/terra-translate/pkg/terraform/translate.go:39.2,39.29 1 2
+github.com/LucasCarioca/terra-translate/pkg/terraform/translate.go:36.16,38.3 1 1
 github.com/LucasCarioca/terra-translate/pkg/terraform/guard-command.go:24.38,29.2 1 0
 github.com/LucasCarioca/terra-translate/pkg/terraform/guard-command.go:31.60,43.2 7 2
 github.com/LucasCarioca/terra-translate/pkg/terraform/guard-command.go:46.36,49.16 2 2
@@ -24,15 +36,3 @@ github.com/LucasCarioca/terra-translate/pkg/terraform/guard-command.go:85.26,88.
 github.com/LucasCarioca/terra-translate/pkg/terraform/guard-command.go:88.10,90.5 1 0
 github.com/LucasCarioca/terra-translate/pkg/terraform/guard-command.go:93.12,97.4 1 0
 github.com/LucasCarioca/terra-translate/pkg/terraform/help-command.go:9.35,17.2 7 0
-github.com/LucasCarioca/terra-translate/pkg/terraform/read-command.go:19.36,24.2 1 0
-github.com/LucasCarioca/terra-translate/pkg/terraform/read-command.go:26.58,31.2 4 0
-github.com/LucasCarioca/terra-translate/pkg/terraform/read-command.go:34.35,37.16 2 0
-github.com/LucasCarioca/terra-translate/pkg/terraform/read-command.go:41.2,42.16 2 0
-github.com/LucasCarioca/terra-translate/pkg/terraform/read-command.go:46.2,47.16 2 0
-github.com/LucasCarioca/terra-translate/pkg/terraform/read-command.go:51.2,56.12 5 0
-github.com/LucasCarioca/terra-translate/pkg/terraform/read-command.go:37.16,39.3 1 0
-github.com/LucasCarioca/terra-translate/pkg/terraform/read-command.go:42.16,44.3 1 0
-github.com/LucasCarioca/terra-translate/pkg/terraform/read-command.go:47.16,49.3 1 0
-github.com/LucasCarioca/terra-translate/pkg/terraform/translate.go:31.63,36.16 5 3
-github.com/LucasCarioca/terra-translate/pkg/terraform/translate.go:39.2,39.29 1 2
-github.com/LucasCarioca/terra-translate/pkg/terraform/translate.go:36.16,38.3 1 1

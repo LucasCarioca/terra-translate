@@ -1,7 +1,7 @@
 .PHONY := all
 
 test:
-	go test ./pkg/terraform -v -covermode=count -coverprofile=coverage.out
+	go test ./pkg/... -v -covermode=count -coverprofile=coverage.out
 
 lint:
 	golint ./...
@@ -11,3 +11,9 @@ vet:
 
 fmt:
 	go fmt ./...
+
+fmt-check:
+	test -z $$(gofmt -l .)
+
+fix:
+	go fix ./...
