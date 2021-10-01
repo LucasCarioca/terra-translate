@@ -9,6 +9,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/LucasCarioca/terra-translate/badge.svg?branch=main)](https://coveralls.io/github/LucasCarioca/terra-translate?branch=main)
 [![Go Report Card](https://goreportcard.com/badge/github.com/LucasCarioca/terra-translate)](https://goreportcard.com/report/github.com/LucasCarioca/terra-translate)
 
+[![DeepSource](https://deepsource.io/gh/LucasCarioca/terra-translate.svg/?label=active+issues&show_trend=true&token=5tGjcFNjPzCJFoV_eSwGwRkX)](https://deepsource.io/gh/LucasCarioca/terra-translate/?ref=repository-badge)
+
 a small utility for reading terraform plan output and used to setup basic ci/cd guard rails.
 
 ### Usage
