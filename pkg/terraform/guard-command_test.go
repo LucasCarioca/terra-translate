@@ -26,7 +26,7 @@ type mockTranslator struct {
 }
 
 //GetSummary mocked version of the get summary method
-func (t *mockTranslator) GetSummary(data string) (Changes, error) {
+func (t *mockTranslator) GetSummary(_ string) (Changes, error) {
 	return t.mockSummaryChanges, t.mockSummaryError
 }
 
