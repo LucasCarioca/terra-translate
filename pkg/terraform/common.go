@@ -6,5 +6,5 @@ import (
 )
 
 var (
-	out  io.Writer      = os.Stdout
+	out io.Writer = os.Stdout
 )
