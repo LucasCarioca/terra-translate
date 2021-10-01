@@ -19,6 +19,8 @@ jobs:
         run: make vet
       - name: Go lint
         run: make lint
+      - name: Go fmt check
+        run: make fmt-check
       - name: Go test
         run: make test
       - name: Convert coverage.out to coverage.lcov
