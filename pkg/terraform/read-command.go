@@ -23,7 +23,7 @@ func NewReadCommand() *ReadCommand {
 	}
 }
 
-func (_ *ReadCommand) getOptions() (*readOptions, error) {
+func (*ReadCommand) getOptions() (*readOptions, error) {
 	readCmd := flag.NewFlagSet("read", flag.ExitOnError)
 	err := readCmd.Parse(os.Args[2:])
 	options := readOptions{}
