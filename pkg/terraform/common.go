@@ -7,5 +7,4 @@ import (
 
 var (
 	out  io.Writer      = os.Stdout
-	exit func(code int) = os.Exit
 )
