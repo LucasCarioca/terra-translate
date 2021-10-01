@@ -1,6 +1,13 @@
 version = 1
 
-test_patterns = ["**/*_test.go","**/*_mock.go"]
+test_patterns = [
+  "**/*_test.go",
+  "**/*_mock.go"
+]
+
+[[analyzers]]
+name = "test-coverage"
+enabled = true
 
 [[analyzers]]
 name = "go"
