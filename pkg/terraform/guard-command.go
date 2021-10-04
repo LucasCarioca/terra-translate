@@ -4,7 +4,7 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	cli "github.com/LucasCarioca/terra-translate/pkg/cli-utilities"
+	cli "github.com/LucasCarioca/terra-translate/pkg/cli"
 	"os"
 )
 

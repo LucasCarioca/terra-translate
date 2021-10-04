@@ -3,7 +3,7 @@ package terraform
 import (
 	"bytes"
 	"errors"
-	cli "github.com/LucasCarioca/terra-translate/pkg/cli-utilities"
+	cli "github.com/LucasCarioca/terra-translate/pkg/cli"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

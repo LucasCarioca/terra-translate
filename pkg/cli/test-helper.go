@@ -1,4 +1,4 @@
-package cliutilities
+package cli
 
 import (
 	"os"

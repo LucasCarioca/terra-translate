@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	cli "github.com/LucasCarioca/terra-translate/pkg/cli-utilities"
+	cli "github.com/LucasCarioca/terra-translate/pkg/cli"
 	t "github.com/LucasCarioca/terra-translate/pkg/terraform"
 	"os"
 )

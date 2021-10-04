@@ -2,7 +2,7 @@ package terraform
 
 import (
 	"fmt"
-	cli "github.com/LucasCarioca/terra-translate/pkg/cli-utilities"
+	cli "github.com/LucasCarioca/terra-translate/pkg/cli"
 )
 
 //ReadCommand controller for reading and interpreting the terraform logs
